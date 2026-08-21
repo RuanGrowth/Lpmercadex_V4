@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Mercadex 24h | Seja um licenciado</title>
+<meta name="description" content="Minimercado autônomo aberto 24 horas, sem funcionários. Comece com R$ 25.000 na unidade Pocket mais R$ 9.500 de taxa de licença. Mais de 500 pontos em 170 cidades." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@600;800&display=swap" rel="stylesheet" />
+<style>
+ *{box-sizing:border-box}
+ body{margin:0;background:#FAF3E7;font-family:Montserrat,system-ui,sans-serif;color:#3E0F1B;-webkit-font-smoothing:antialiased}
+ h1,h2,h3,h4{font-family:Poppins,system-ui,sans-serif}
+ a{color:#D9414B;text-decoration:none}
+ a:hover{color:#3E0F1B}
+ input,select,button{font-family:inherit}
+ input:focus,select:focus{outline:2px solid #D9414B;outline-offset:1px}
+ [data-rot]{display:inline-block;vertical-align:bottom;font-size:clamp(25px,3.1vw,42px);height:1.36em;overflow:hidden;position:relative;max-width:100%}
+ [data-rot]>span{display:block;white-space:nowrap;line-height:1.36;color:#FF8A8F;animation:mx-rot 9s cubic-bezier(.76,0,.16,1) infinite;will-change:transform}
+ @keyframes mx-rot{0%,26%{transform:translateY(0)}33%,59%{transform:translateY(-1.36em)}66%,92%{transform:translateY(-2.72em)}100%{transform:translateY(-4.08em)}}
+ @keyframes mx-pulse{0%,100%{opacity:1}50%{opacity:.4}}
+ @keyframes mx-marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+ [data-faixa]{overflow:hidden;white-space:nowrap;width:100%}
+ [data-faixa] .mx-run{display:inline-flex;width:max-content;animation:mx-marq 32s linear infinite;will-change:transform}
+ [data-faixa="rev"] .mx-run{animation-direction:reverse;animation-duration:40s}
+ @keyframes mx-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+ [data-balao]{animation:mx-float 5s ease-in-out infinite;will-change:transform}
+ [data-balao]:nth-child(2){animation-delay:.7s}
+ [data-balao]:nth-child(3){animation-delay:1.3s}
+ @media (prefers-reduced-motion:reduce){[data-rot]>span,[data-balao],[data-faixa] .mx-run{animation:none!important}}
+ [data-gal-wrap]{overflow:hidden}
+ [data-mask]{overflow:hidden}
+ [data-bar]{transform:translateY(-100%)}
+ [data-zap]{opacity:0;pointer-events:none}
+ @media (max-width:620px){[data-bar-price]{display:none!important}}
+ [data-num]{font-variant-numeric:tabular-nums}
+ [data-stats]{display:flex;flex-wrap:wrap;gap:20px 30px}
+ [data-stats]>div{min-width:96px}
+ @media (max-width:1060px){
+  [data-grid="hero"]{grid-template-columns:1fr!important;gap:32px!important}
+  [data-cards]{right:0!important}
+  [data-figura] img{width:min(760px,100%)!important;margin:0 auto -2px!important}
+ }
+ @media (max-width:1000px){
+  [data-grid="bene"],[data-grid="passos"],[data-grid="galeria"],[data-grid="incluso"]{grid-template-columns:1fr 1fr!important}
+  [data-grid="app"]{grid-template-columns:1fr!important;padding:34px!important;gap:30px!important}
+  [data-grid="modelos"]{grid-template-columns:1fr!important}
+  [data-gal-wrap]{overflow-x:auto;-webkit-overflow-scrolling:touch}
+ }
+ @media (max-width:860px){
+  [data-cards]{position:static!important;grid-template-columns:1fr 1fr!important;justify-items:stretch!important;margin:14px auto 0!important;max-width:520px;gap:10px!important}
+  [data-cards]>div:last-child{grid-column:1 / -1}
+  [data-balao]{min-width:0!important;padding:12px 14px!important}
+  [data-figura] img{width:min(520px,100%)!important;margin:0 auto -2px!important}
+  [data-grid="hero"]{padding:34px 20px 0!important}
+  [data-grid="cta"]{grid-template-columns:1fr!important;gap:0!important}
+  [data-grid="cta"]>div{padding:58px 0 32px!important}
+  [data-grid="cta"]>img{justify-self:center!important;max-width:300px!important}
+ }
+ @media (max-width:560px){
+  [data-grid="bene"],[data-grid="passos"],[data-grid="galeria"],[data-grid="incluso"]{grid-template-columns:1fr!important}
+  [data-cards]{grid-template-columns:1fr!important}
+  [data-cards]>div:last-child{grid-column:auto}
+  section{padding-left:18px!important;padding-right:18px!important}
+  [data-grid="app"]{padding:24px!important}
+  [data-gal-fig]{width:78vw!important}
+ }
+</style>
+<link rel="preload" as="image" href="real-standard-hall.webp" fetchpriority="high" />
+<link rel="preload" as="image" href="equipe-mercadex.webp" />
+<meta property="og:title" content="Mercadex 24h | Seja um licenciado" />
+<meta property="og:description" content="Minimercado autônomo aberto 24 horas, sem funcionários. Comece com R$ 34.500." />
+<meta property="og:image" content="real-standard-hall.webp" />
+<meta property="og:type" content="website" />
+<script src="gsap.min.js" defer=""></script>
+<script src="ScrollTrigger.min.js" defer=""></script>
+<script src="SplitText.min.js" defer=""></script>
+<script src="CustomEase.min.js" defer=""></script>
+<script src="DrawSVGPlugin.min.js" defer=""></script>
+<script src="ScrambleTextPlugin.min.js" defer=""></script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#2C0A14"/><circle cx="50" cy="50" r="26" fill="#D9414B"/><text x="50" y="59" text-anchor="middle" font-family="Poppins,sans-serif" font-size="22" font-weight="800" fill="#FFF7EE">M</text></svg></template>
+</helmet>
+<div style="width:100%;overflow-x:hidden;position:relative">
+
+ <div data-bar="" style="position:fixed;top:0;left:0;right:0;z-index:75;background:rgba(44,10,20,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,247,238,.14)">
+  <div style="max-width:1200px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+   <div style="display:flex;align-items:center;gap:10px">
+    <img src="cropped-Logo-Mercadex-Goiaba-Redondo.webp" alt="" width="34" height="34" loading="lazy" style="width:34px;height:34px;display:block" />
+    <span style="font-family:Poppins,sans-serif;color:#FFF7EE;font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase">Mercadex<span style="color:#FF8A8F"> 24h</span></span>
+   </div>
+   <div style="display:flex;align-items:center;gap:16px">
+    <span data-bar-price="" style="color:rgba(255,247,238,.72);font-size:13px;font-weight:600">Comece com R$ 34.500</span>
+    <a data-magnet="" href="#form" style="background:#D9414B;color:#fff;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:12px 18px;border-radius:999px" style-hover="background:#FFF7EE;color:#2C0A14">Quero ser licenciado</a>
+   </div>
+  </div>
+ </div>
+
+ <div data-progress="" style="position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:#D9414B;z-index:80"></div>
+
+ <a data-zap="" href="{{ whatsappLink }}" target="_blank" rel="noopener" style="position:fixed;right:18px;bottom:18px;z-index:70;display:flex;align-items:center;gap:10px;background:#28A76A;color:#fff;font-weight:700;font-size:14px;padding:14px 20px;border-radius:999px;box-shadow:0 14px 30px rgba(0,0,0,.25)" style-hover="background:#1E8A57;color:#fff">Falar no WhatsApp</a>
+
+ <section id="topo" data-screen-label="Hero" style="position:relative;background:#2C0A14;isolation:isolate;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:clamp(400px,60vh,760px);overflow:hidden;z-index:-3">
+   <img data-capa="" src="real-standard-hall.webp" alt="" width="1280" height="960" decoding="async" style="width:100%;height:118%;object-fit:cover;object-position:center 46%;filter:saturate(1.1)" />
+   <div style="position:absolute;inset:0;background:linear-gradient(103deg,rgba(44,10,20,.93) 6%,rgba(168,32,46,.7) 46%,rgba(224,88,96,.5) 100%);mix-blend-mode:multiply"></div>
+   <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,10,20,.52) 0%,rgba(44,10,20,.24) 30%,rgba(44,10,20,.84) 78%,#2C0A14 100%)"></div>
+  </div>
+
+  <div data-glow="" aria-hidden="true" style="position:absolute;left:0;top:0;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,138,143,.42),rgba(255,138,143,0));pointer-events:none;opacity:0;z-index:-1"></div>
+  <div style="max-width:1200px;margin:0 auto;padding:20px 24px 4px;display:flex;align-items:center;gap:13px">
+   <img data-logo="" src="cropped-Logo-Mercadex-Goiaba-Redondo.webp" alt="Mercadex 24h" width="58" height="58" fetchpriority="high" style="width:58px;height:58px;display:block" />
+   <span style="font-family:Poppins,sans-serif;color:#FFF7EE;font-weight:800;font-size:19px;letter-spacing:.1em;text-transform:uppercase;line-height:1">Mercadex<span style="color:#FF8A8F"> 24h</span></span>
+  </div>
+
+  <div data-grid="hero" style="max-width:1200px;margin:0 auto;padding:12px 24px 0;display:grid;grid-template-columns:1fr 1.06fr;gap:36px;align-items:center">
+   <div>
+    <div data-hero-el="" style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,247,238,.12);border:1px solid rgba(255,247,238,.28);color:#FFF7EE;padding:8px 15px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase">
+     <span style="width:7px;height:7px;border-radius:50%;background:#28A76A;animation:mx-pulse 2s ease-in-out infinite"></span>
+     Licenciamento aberto no Brasil
+    </div>
+    <h1 style="margin:18px 0 0;color:#FFF7EE;font-size:clamp(30px,3.1vw,42px);line-height:1.14;letter-spacing:-.035em;font-weight:800;text-wrap:balance"><span data-split="">Seu minimercado 24h</span><br /><span data-rot=""><span>faturando sem parar<br />gerando renda extra<br />sem precisar de funcionário<br />faturando sem parar</span></span></h1>
+    <p data-hero-el="" style="margin:14px 0 0;color:rgba(255,247,238,.82);font-size:15px;line-height:1.55;max-width:32em;text-wrap:pretty">Um modelo que já roda em mais de 500 pontos pelo país. Tecnologia, treinamento e suporte são nossos. Comece com <span style="position:relative;display:inline-block;white-space:nowrap"><strong style="color:#FFF7EE">R$ 34.500</strong><svg data-underline="" viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;left:0;bottom:-5px;width:100%;height:7px;overflow:visible"><path d="M2 6 C 54 1, 148 1, 198 4" fill="none" stroke="#FF8A8F" stroke-width="3" stroke-linecap="round"></path></svg></span>: R$ 25.000 na unidade Pocket mais R$ 9.500 de taxa de licença.</p>
+    <div data-hero-el="" style="display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:16px">
+     <div style="display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:rgba(255,247,238,.9)"><span style="color:#FF8A8F;font-weight:700">✓</span>Ninguém no caixa</div>
+     <div style="display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:rgba(255,247,238,.9)"><span style="color:#FF8A8F;font-weight:700">✓</span>App e sistema próprios</div>
+     <div style="display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:rgba(255,247,238,.9)"><span style="color:#FF8A8F;font-weight:700">✓</span>Consultor de campo</div>
+    </div>
+
+    <div id="form" data-hero-form="" style="margin-top:20px;max-width:520px;background:#fff;border:1px solid #F0E2D2;border-radius:18px;padding:22px 22px 20px;box-shadow:0 24px 50px rgba(62,15,27,.16)">
+     <sc-if value="{{ enviado }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:32px 6px;text-align:center">
+       <div style="font-size:34px">✓</div>
+       <h3 style="margin:12px 0 8px;font-size:22px;font-weight:800">Cadastro recebido</h3>
+       <p style="margin:0;color:#7A5560;font-size:15px;line-height:1.55">Um especialista Mercadex fala com você pelo WhatsApp em até 1 dia útil.</p>
+      </div>
+     </sc-if>
+     <sc-if value="{{ mostrarForm }}" hint-placeholder-val="{{ true }}">
+      <div>
+       <h2 style="margin:0;font-size:21px;font-weight:800;letter-spacing:-.02em">Fale com um especialista</h2>
+       <p style="margin:6px 0 14px;color:#7A5560;font-size:13.5px;line-height:1.45">Retorno em até 1 dia útil, sem compromisso.</p>
+       <div style="display:grid;gap:9px">
+        <input value="{{ nome }}" onChange="{{ setNome }}" placeholder="Seu nome completo" style="width:100%;padding:12px 14px;border:1.5px solid #E3D6C4;border-radius:10px;background:#fff;font-size:14.5px;color:#3E0F1B" />
+        <input value="{{ tel }}" onChange="{{ setTel }}" inputmode="tel" placeholder="WhatsApp com DDD" style="width:100%;padding:12px 14px;border:1.5px solid #E3D6C4;border-radius:10px;background:#fff;font-size:14.5px;color:#3E0F1B" />
+        <input value="{{ cidade }}" onChange="{{ setCidade }}" placeholder="Cidade e estado" style="width:100%;padding:12px 14px;border:1.5px solid #E3D6C4;border-radius:10px;background:#fff;font-size:14.5px;color:#3E0F1B" />
+        <select value="{{ capital }}" onChange="{{ setCapital }}" style="width:100%;padding:12px 14px;border:1.5px solid #E3D6C4;border-radius:10px;background:#fff;font-size:14.5px;color:#3E0F1B">
+         <option value="">Quanto você tem para investir?</option>
+         <option value="ate34">Menos de R$ 34.500</option>
+         <option value="34a50">R$ 34.500 a R$ 50 mil</option>
+         <option value="50a80">R$ 50 mil a R$ 80 mil</option>
+         <option value="80mais">Acima de R$ 80 mil</option>
+        </select>
+        <select value="{{ prazo }}" onChange="{{ setPrazo }}" style="width:100%;padding:12px 14px;border:1.5px solid #E3D6C4;border-radius:10px;background:#fff;font-size:14.5px;color:#3E0F1B">
+         <option value="">Em quanto tempo quer inaugurar?</option>
+         <option value="imediato">Imediatamente</option>
+         <option value="3m">Até 3 meses</option>
+         <option value="6m">Até 6 meses</option>
+         <option value="12m">Até 12 meses</option>
+         <option value="2027">Somente em 2027</option>
+        </select>
+        <button data-magnet="" onClick="{{ enviar }}" style="margin-top:3px;width:100%;padding:15px;border:0;border-radius:10px;background:#D9414B;color:#fff;font-size:14.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer" style-hover="background:#3E0F1B">Quero ser licenciado</button>
+       </div>
+       <sc-if value="{{ erro }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:9px 0 0;color:#D9414B;font-size:12.5px;font-weight:600;line-height:1.4;text-align:center">Preencha seu nome e o WhatsApp para a gente falar com você.</p>
+       </sc-if>
+       <p style="margin:10px 0 0;color:#9A7B85;font-size:11.5px;line-height:1.45;text-align:center">Ao enviar, você concorda em receber contato da Mercadex 24h.</p>
+      </div>
+     </sc-if>
+    </div>
+   </div>
+
+   <div data-figura="" style="position:relative;align-self:end;display:block;margin-bottom:-2px">
+    <div style="position:relative;display:flex;align-items:flex-end;justify-content:center">
+     <img src="equipe-mercadex.webp" alt="Licenciados Mercadex 24h" width="1100" height="733" fetchpriority="high" decoding="async" style="position:relative;width:min(1000px,152%);max-width:none;height:auto;display:block;margin:0 calc(-1 * max(0px, (100vw - 1200px) / 2)) 0 auto;filter:drop-shadow(0 26px 44px rgba(0,0,0,.4))" />
+    </div>
+    <div data-cards="" style="position:absolute;right:calc(-1 * max(0px, (100vw - 1216px) / 2));bottom:8%;display:grid;gap:12px;justify-items:end;z-index:2">
+     <div data-balao="" style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 16px 36px rgba(0,0,0,.28);display:flex;align-items:center;gap:12px;min-width:214px">
+      <div style="width:38px;height:38px;border-radius:11px;background:#FDECEC;color:#D9414B;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px">↑</div>
+      <div>
+       <div style="font-family:Poppins,sans-serif;font-weight:800;font-size:15px;line-height:1.2">Mais rentabilidade</div>
+       <div style="color:#8A6B74;font-size:12.5px;margin-top:2px">Vendendo 24 horas</div>
+      </div>
+     </div>
+     <div data-balao="" style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 16px 36px rgba(0,0,0,.28);display:flex;align-items:center;gap:12px;min-width:214px">
+      <div style="width:38px;height:38px;border-radius:11px;background:#EAF7F0;color:#28A76A;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px">R$</div>
+      <div>
+       <div style="font-family:Poppins,sans-serif;font-weight:800;font-size:15px;line-height:1.2">Sem folha de pagamento</div>
+       <div style="color:#8A6B74;font-size:12.5px;margin-top:2px">A loja opera sozinha</div>
+      </div>
+     </div>
+     <div data-balao="" style="background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 16px 36px rgba(0,0,0,.28);display:flex;align-items:center;gap:12px;min-width:214px">
+      <div style="width:38px;height:38px;border-radius:11px;background:#FFF1DC;color:#C98A2B;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px">★</div>
+      <div>
+       <div style="font-family:Poppins,sans-serif;font-weight:800;font-size:15px;line-height:1.2">Mais de 500 pontos</div>
+       <div style="color:#8A6B74;font-size:12.5px;margin-top:2px">Abertos agora mesmo</div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <div data-faixa-wrap="" style="position:relative;display:grid;margin-top:14px">
+   <div data-faixa="" style="background:#D9414B;padding:9px 0">
+    <div class="mx-run"><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:#FFF7EE;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">Aberto 24 horas<span style="color:rgba(255,247,238,.55)">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:#FFF7EE;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">Ninguém no caixa<span style="color:rgba(255,247,238,.55)">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:#FFF7EE;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">App próprio<span style="color:rgba(255,247,238,.55)">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:#FFF7EE;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">Mais de 500 pontos<span style="color:rgba(255,247,238,.55)">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:#FFF7EE;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">170 cidades<span style="color:rgba(255,247,238,.55)">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:#FFF7EE;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">Aberto 24 horas<span style="color:rgba(255,247,238,.55)">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:#FFF7EE;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">Ninguém no caixa<span style="color:rgba(255,247,238,.55)">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:#FFF7EE;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">App próprio<span style="color:rgba(255,247,238,.55)">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:#FFF7EE;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">Mais de 500 pontos<span style="color:rgba(255,247,238,.55)">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:#FFF7EE;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">170 cidades<span style="color:rgba(255,247,238,.55)">✦</span></span></div>
+   </div>
+   <div data-faixa="rev" style="background:#3E0F1B;border-bottom:1px solid rgba(255,247,238,.12);padding:9px 0">
+    <div class="mx-run"><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:rgba(255,247,238,.82);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">Renda recorrente<span style="color:#FF8A8F">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:rgba(255,247,238,.82);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">Consultor de campo<span style="color:#FF8A8F">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:rgba(255,247,238,.82);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">Ajuda para achar o ponto<span style="color:#FF8A8F">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:rgba(255,247,238,.82);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">Marketing todo mês<span style="color:#FF8A8F">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:rgba(255,247,238,.82);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">Comece com R$ 34.500<span style="color:#FF8A8F">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:rgba(255,247,238,.82);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">Renda recorrente<span style="color:#FF8A8F">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:rgba(255,247,238,.82);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">Consultor de campo<span style="color:#FF8A8F">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:rgba(255,247,238,.82);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">Ajuda para achar o ponto<span style="color:#FF8A8F">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:rgba(255,247,238,.82);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">Marketing todo mês<span style="color:#FF8A8F">✦</span></span><span style="display:inline-flex;align-items:center;gap:24px;padding:0 24px;color:rgba(255,247,238,.82);font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap">Comece com R$ 34.500<span style="color:#FF8A8F">✦</span></span></div>
+   </div>
+  </div>
+
+  <div style="border-top:1px solid rgba(255,247,238,.16);background:rgba(44,10,20,.55)">
+   <div style="max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;flex-wrap:wrap;gap:12px 44px;align-items:center;justify-content:space-between">
+    <div style="color:rgba(255,247,238,.65);font-size:13px;font-weight:600;letter-spacing:.04em">Rede fundada em 2021 e hoje referência em varejo autônomo</div>
+    <div style="display:flex;flex-wrap:wrap;gap:14px 40px">
+     <div style="font-size:14px;font-weight:700;color:#FFF7EE">+<span data-num="" data-to="500">500</span> <span style="color:rgba(255,247,238,.6);font-weight:600">pontos ativos</span></div>
+     <div style="font-size:14px;font-weight:700;color:#FFF7EE"><span data-num="" data-to="170">170</span> <span style="color:rgba(255,247,238,.6);font-weight:600">cidades</span></div>
+     <div style="font-size:14px;font-weight:700;color:#FFF7EE">+<span data-num="" data-to="100">100</span> mil <span style="color:rgba(255,247,238,.6);font-weight:600">atendidos</span></div>
+     <div style="font-size:14px;font-weight:700;color:#FFF7EE">R$ <span data-num="" data-to="5">5</span> mi <span style="color:rgba(255,247,238,.6);font-weight:600">na rede por mês</span></div>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <section data-screen-label="Como funciona" style="background:#FAF3E7;padding:76px 24px 64px">
+  <div style="max-width:1200px;margin:0 auto">
+   <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap">
+    <div style="max-width:34em">
+     <div data-reveal="" style="color:#D9414B;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">Como funciona</div>
+     <h2 style="margin:14px 0 0;font-size:clamp(30px,5vw,44px);line-height:1.07;letter-spacing:-.03em;font-weight:800;text-wrap:balance">Uma loja que trabalha enquanto você dorme</h2>
+    </div>
+    <p data-reveal="" style="margin:0;color:#7A5560;font-size:16px;line-height:1.65;max-width:26em">O cliente abre a porta com o QR Code, escaneia os produtos e paga pelo app. Não existe caixa, não existe fila. Você repõe o estoque e acompanha tudo pelo celular.</p>
+   </div>
+
+   <div data-grid="bene" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:42px">
+    <div data-tilt="" style="background:#fff;border:1px solid #EDE0CE;border-radius:16px;padding:26px" style-hover="border-color:#D9414B">
+     <div style="font-size:12px;font-weight:700;color:#D9414B;letter-spacing:.14em">01</div>
+     <h3 style="margin:12px 0 8px;font-size:19px;font-weight:800;letter-spacing:-.01em">Vende 24 horas</h3>
+     <p style="margin:0;color:#7A5560;font-size:14.5px;line-height:1.6">Domingo, feriado, três da manhã. A loja está aberta e ninguém precisa estar lá.</p>
+    </div>
+    <div data-tilt="" style="background:#fff;border:1px solid #EDE0CE;border-radius:16px;padding:26px" style-hover="border-color:#D9414B">
+     <div style="font-size:12px;font-weight:700;color:#D9414B;letter-spacing:.14em">02</div>
+     <h3 style="margin:12px 0 8px;font-size:19px;font-weight:800;letter-spacing:-.01em">Autoatendimento seguro</h3>
+     <p style="margin:0;color:#7A5560;font-size:14.5px;line-height:1.6">Compra pelo app ou pelo totem, com câmeras e antifurto ligados o tempo todo.</p>
+    </div>
+    <div data-tilt="" style="background:#fff;border:1px solid #EDE0CE;border-radius:16px;padding:26px" style-hover="border-color:#D9414B">
+     <div style="font-size:12px;font-weight:700;color:#D9414B;letter-spacing:.14em">03</div>
+     <h3 style="margin:12px 0 8px;font-size:19px;font-weight:800;letter-spacing:-.01em">Ajuda para achar o ponto</h3>
+     <p style="margin:0;color:#7A5560;font-size:14.5px;line-height:1.6">Auxiliamos você na prospecção, na validação e na negociação do ponto comercial.</p>
+    </div>
+    <div data-tilt="" style="background:#fff;border:1px solid #EDE0CE;border-radius:16px;padding:26px" style-hover="border-color:#D9414B">
+     <div style="font-size:12px;font-weight:700;color:#D9414B;letter-spacing:.14em">04</div>
+     <h3 style="margin:12px 0 8px;font-size:19px;font-weight:800;letter-spacing:-.01em">Suporte que atende</h3>
+     <p style="margin:0;color:#7A5560;font-size:14.5px;line-height:1.6">Treinamento, consultor de campo, fornecedores parceiros e material de marketing todo mês.</p>
+    </div>
+   </div>
+
+   <div data-grid="app" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;background:#3E0F1B;border-radius:24px;padding:48px;margin-top:18px;overflow:hidden">
+    <div>
+     <div data-reveal="" style="color:#F0616B;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">App Mercadex</div>
+     <h3 data-reveal="" style="margin:14px 0 20px;color:#FAF3E7;font-size:clamp(26px,4vw,34px);line-height:1.1;letter-spacing:-.025em;font-weight:800">Sua loja inteira no celular</h3>
+     <div style="display:grid;gap:12px">
+      <div data-reveal="" style="display:flex;gap:12px;align-items:flex-start;color:rgba(250,243,231,.82);font-size:15.5px;line-height:1.5"><span style="color:#F0616B">•</span>Estoque e preços atualizados na hora</div>
+      <div data-reveal="" style="display:flex;gap:12px;align-items:flex-start;color:rgba(250,243,231,.82);font-size:15.5px;line-height:1.5"><span style="color:#F0616B">•</span>Porta liberada por QR Code</div>
+      <div data-reveal="" style="display:flex;gap:12px;align-items:flex-start;color:rgba(250,243,231,.82);font-size:15.5px;line-height:1.5"><span style="color:#F0616B">•</span>Câmeras integradas ao sistema</div>
+      <div data-reveal="" style="display:flex;gap:12px;align-items:flex-start;color:rgba(250,243,231,.82);font-size:15.5px;line-height:1.5"><span style="color:#F0616B">•</span>Compra por voz com a Alexa</div>
+     </div>
+     <div data-stats="" style="margin-top:32px;padding-top:26px;border-top:1px solid rgba(250,243,231,.15)">
+      <div><div style="color:#FAF3E7;font-size:26px;font-weight:800;letter-spacing:-.02em">+<span data-num="" data-to="500">500</span></div><div style="color:rgba(250,243,231,.6);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase">Pontos ativos</div></div>
+      <div><div style="color:#FAF3E7;font-size:26px;font-weight:800;letter-spacing:-.02em"><span data-num="" data-to="170">170</span></div><div style="color:rgba(250,243,231,.6);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase">Cidades</div></div>
+      <div><div style="color:#FAF3E7;font-size:26px;font-weight:800;letter-spacing:-.02em">+<span data-num="" data-to="100">100</span> mil</div><div style="color:rgba(250,243,231,.6);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase">Atendidos</div></div>
+      <div><div style="color:#FAF3E7;font-size:26px;font-weight:800;letter-spacing:-.02em">R$ <span data-num="" data-to="5">5</span> mi</div><div style="color:rgba(250,243,231,.6);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase">Rede por mês</div></div>
+     </div>
+    </div>
+    <img data-para="" src="real-geladeiras.webp" alt="Refrigeradores e gôndolas de uma unidade Mercadex em operação" width="1100" height="1467" loading="lazy" decoding="async" style="width:100%;height:auto;max-height:470px;object-fit:cover;border-radius:16px;display:block" />
+   </div>
+  </div>
+ </section>
+
+ <section id="modelos" data-screen-label="Modelos e investimento" style="background:#fff;padding:72px 24px;border-top:1px solid #EDE0CE;border-bottom:1px solid #EDE0CE">
+  <div style="max-width:1200px;margin:0 auto">
+   <div style="text-align:center;max-width:42em;margin:0 auto">
+    <div data-reveal="" style="color:#D9414B;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">Modelos e investimento</div>
+    <h2 data-reveal="" style="margin:14px 0 0;font-size:clamp(30px,5vw,44px);line-height:1.07;letter-spacing:-.03em;font-weight:800;text-wrap:balance">Três formatos. Escolha pelo espaço que você tem.</h2>
+    <p data-reveal="" style="margin:16px 0 0;color:#7A5560;font-size:17px;line-height:1.6">A Pocket custa R$ 25.000 mais R$ 9.500 de taxa de licença, um total de <strong data-scramble="">R$ 34.500</strong>. Standard e Container saem por simulação, porque dependem do espaço e do mix.</p>
+   </div>
+
+   <div data-grid="modelos" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px">
+    <div data-card="" style="border:1px solid #EDE0CE;border-radius:20px;overflow:hidden;background:#FAF3E7;display:flex;flex-direction:column" style-hover="border-color:#D9414B">
+     <div style="overflow:hidden;height:230px"><img src="real-pocket-fachada.webp" alt="Unidade Mercadex Pocket instalada em um condomínio" width="768" height="1024" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center 60%;display:block" /></div>
+     <div style="padding:26px;display:flex;flex-direction:column;gap:14px;flex:1">
+      <div>
+       <div style="font-size:11px;font-weight:700;color:#D9414B;letter-spacing:.16em;text-transform:uppercase">Modelo 01</div>
+       <h3 style="margin:8px 0 0;font-size:26px;font-weight:800;letter-spacing:-.02em">Pocket</h3>
+      </div>
+      <p style="margin:0;color:#7A5560;font-size:14.5px;line-height:1.6">Espaço interno compacto, com mix enxuto e certeiro. É o jeito mais rápido de começar.</p>
+      <div style="display:grid;gap:8px;padding:16px;background:#fff;border:1px solid #EDE0CE;border-radius:12px;font-size:14px">
+       <div style="display:flex;justify-content:space-between;gap:12px"><span style="color:#7A5560">Indicado para</span><strong style="text-align:right">Condomínios de 80 a 120 apartamentos</strong></div>
+       <div style="display:flex;justify-content:space-between;gap:12px;padding-top:8px;border-top:1px solid #F2E8DA"><span style="color:#7A5560">Unidade</span><strong style="text-align:right">R$ 25.000</strong></div>
+       <div style="display:flex;justify-content:space-between;gap:12px;padding-top:8px;border-top:1px solid #F2E8DA"><span style="color:#7A5560">Taxa de licença</span><strong style="text-align:right">R$ 9.500</strong></div>
+       <div style="display:flex;justify-content:space-between;gap:12px;padding-top:8px;border-top:1px solid #F2E8DA"><span style="color:#7A5560">Total para começar</span><strong style="text-align:right;color:#D9414B">R$ 34.500</strong></div>
+      </div>
+      <a data-magnet="" href="#form" style="margin-top:auto;text-align:center;background:#D9414B;color:#fff;font-weight:700;font-size:13px;letter-spacing:.07em;text-transform:uppercase;padding:15px 20px;border-radius:10px" style-hover="background:#3E0F1B;color:#fff">Simular Pocket</a>
+     </div>
+    </div>
+
+    <div data-card="" style="border:1px solid #EDE0CE;border-radius:20px;overflow:hidden;background:#FAF3E7;display:flex;flex-direction:column" style-hover="border-color:#D9414B">
+     <div style="overflow:hidden;height:230px"><img src="real-standard-interno.webp" alt="Interior de uma unidade Mercadex Standard com gôndolas e refrigeradores" width="960" height="1280" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center 55%;display:block" /></div>
+     <div style="padding:26px;display:flex;flex-direction:column;gap:14px;flex:1">
+      <div>
+       <div style="font-size:11px;font-weight:700;color:#D9414B;letter-spacing:.16em;text-transform:uppercase">Modelo 02</div>
+       <h3 style="margin:8px 0 0;font-size:26px;font-weight:800;letter-spacing:-.02em">Standard</h3>
+      </div>
+      <p style="margin:0;color:#7A5560;font-size:14.5px;line-height:1.6">O formato mais completo, com mix amplo e mais refrigeração para dar conta de um público maior.</p>
+      <div style="display:grid;gap:8px;padding:16px;background:#fff;border:1px solid #EDE0CE;border-radius:12px;font-size:14px">
+       <div style="display:flex;justify-content:space-between;gap:12px"><span style="color:#7A5560">Indicado para</span><strong style="text-align:right">Condomínios acima de 120 apartamentos</strong></div>
+       <div style="display:flex;justify-content:space-between;gap:12px;padding-top:8px;border-top:1px solid #F2E8DA"><span style="color:#7A5560">Espaço</span><strong style="text-align:right">Área interna do condomínio</strong></div>
+       <div style="display:flex;justify-content:space-between;gap:12px;padding-top:8px;border-top:1px solid #F2E8DA"><span style="color:#7A5560">Investimento</span><strong style="text-align:right;color:#D9414B">Sob simulação</strong></div>
+      </div>
+      <a data-magnet="" href="#form" style="margin-top:auto;text-align:center;background:#D9414B;color:#fff;font-weight:700;font-size:13px;letter-spacing:.07em;text-transform:uppercase;padding:15px 20px;border-radius:10px" style-hover="background:#3E0F1B;color:#fff">Simular Standard</a>
+     </div>
+    </div>
+
+    <div data-card="" style="border:1px solid #EDE0CE;border-radius:20px;overflow:hidden;background:#FAF3E7;display:flex;flex-direction:column" style-hover="border-color:#D9414B">
+     <div style="overflow:hidden;height:230px"><img src="real-container-condominio.webp" alt="Unidade Mercadex Container na área externa de um condomínio" width="1280" height="960" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center 60%;display:block" /></div>
+     <div style="padding:26px;display:flex;flex-direction:column;gap:14px;flex:1">
+      <div>
+       <div style="font-size:11px;font-weight:700;color:#D9414B;letter-spacing:.16em;text-transform:uppercase">Modelo 03</div>
+       <h3 style="margin:8px 0 0;font-size:26px;font-weight:800;letter-spacing:-.02em">Container</h3>
+      </div>
+      <p style="margin:0;color:#7A5560;font-size:14.5px;line-height:1.6">Para quando só existe área externa disponível. Chega montado e já pronto para vender.</p>
+      <div style="display:grid;gap:8px;padding:16px;background:#fff;border:1px solid #EDE0CE;border-radius:12px;font-size:14px">
+       <div style="display:flex;justify-content:space-between;gap:12px"><span style="color:#7A5560">Indicado para</span><strong style="text-align:right">Locais só com área externa livre</strong></div>
+       <div style="display:flex;justify-content:space-between;gap:12px;padding-top:8px;border-top:1px solid #F2E8DA"><span style="color:#7A5560">Espaço</span><strong style="text-align:right">Área externa do imóvel</strong></div>
+       <div style="display:flex;justify-content:space-between;gap:12px;padding-top:8px;border-top:1px solid #F2E8DA"><span style="color:#7A5560">Investimento</span><strong style="text-align:right;color:#D9414B">Sob simulação</strong></div>
+      </div>
+      <a data-magnet="" href="#form" style="margin-top:auto;text-align:center;background:#D9414B;color:#fff;font-weight:700;font-size:13px;letter-spacing:.07em;text-transform:uppercase;padding:15px 20px;border-radius:10px" style-hover="background:#3E0F1B;color:#fff">Simular Container</a>
+     </div>
+    </div>
+   </div>
+
+   <p data-reveal="" style="margin:18px 0 0;text-align:center;color:#8A6B74;font-size:14px;line-height:1.6">Também atendemos empresas, coworkings e lojas de rua. Fale com um especialista para avaliar o seu caso.</p>
+
+   <div style="margin-top:56px;background:#FAF3E7;border:1px solid #EDE0CE;border-radius:22px;padding:40px">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
+     <h3 data-reveal="" style="margin:0;font-size:clamp(24px,3.4vw,30px);font-weight:800;letter-spacing:-.025em">O que entra no investimento</h3>
+     <div data-reveal="" style="font-size:14px;color:#7A5560">Você não compra um equipamento. Recebe a loja pronta para vender.</div>
+    </div>
+    <div data-grid="incluso" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px">
+     <div data-inc="" style="background:#fff;border:1px solid #EDE0CE;border-radius:12px;padding:16px 18px;display:flex;gap:12px;align-items:center"><span style="color:#28A76A;font-weight:700">✓</span><div style="font-size:14.5px;font-weight:600">Estoque inicial de produtos</div></div>
+     <div data-inc="" style="background:#fff;border:1px solid #EDE0CE;border-radius:12px;padding:16px 18px;display:flex;gap:12px;align-items:center"><span style="color:#28A76A;font-weight:700">✓</span><div style="font-size:14.5px;font-weight:600">Gôndolas e expositores</div></div>
+     <div data-inc="" style="background:#fff;border:1px solid #EDE0CE;border-radius:12px;padding:16px 18px;display:flex;gap:12px;align-items:center"><span style="color:#28A76A;font-weight:700">✓</span><div style="font-size:14.5px;font-weight:600">Geladeiras e refrigeração</div></div>
+     <div data-inc="" style="background:#fff;border:1px solid #EDE0CE;border-radius:12px;padding:16px 18px;display:flex;gap:12px;align-items:center"><span style="color:#28A76A;font-weight:700">✓</span><div style="font-size:14.5px;font-weight:600">Sistema, app e meios de pagamento</div></div>
+     <div data-inc="" style="background:#fff;border:1px solid #EDE0CE;border-radius:12px;padding:16px 18px;display:flex;gap:12px;align-items:center"><span style="color:#28A76A;font-weight:700">✓</span><div style="font-size:14.5px;font-weight:600">Câmeras e monitoramento</div></div>
+     <div data-inc="" style="background:#fff;border:1px solid #EDE0CE;border-radius:12px;padding:16px 18px;display:flex;gap:12px;align-items:center"><span style="color:#28A76A;font-weight:700">✓</span><div style="font-size:14.5px;font-weight:600">Apoio na abertura do CNPJ</div></div>
+     <div data-inc="" style="background:#fff;border:1px solid #EDE0CE;border-radius:12px;padding:16px 18px;display:flex;gap:12px;align-items:center"><span style="color:#28A76A;font-weight:700">✓</span><div style="font-size:14.5px;font-weight:600">Treinamento do licenciado</div></div>
+     <div data-inc="" style="background:#fff;border:1px solid #EDE0CE;border-radius:12px;padding:16px 18px;display:flex;gap:12px;align-items:center"><span style="color:#28A76A;font-weight:700">✓</span><div style="font-size:14.5px;font-weight:600">Implantação e montagem da loja</div></div>
+     <div data-inc="" style="background:#fff;border:1px solid #EDE0CE;border-radius:12px;padding:16px 18px;display:flex;gap:12px;align-items:center"><span style="color:#28A76A;font-weight:700">✓</span><div style="font-size:14.5px;font-weight:600">Suporte contínuo e marketing</div></div>
+    </div>
+   </div>
+
+   <div id="comecar" style="margin-top:64px">
+    <h3 data-reveal="" style="margin:0 0 28px;font-size:26px;font-weight:800;letter-spacing:-.02em;text-align:center">Do primeiro contato à inauguração</h3>
+    <div data-grid="passos" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+     <div data-passo="" style="padding:24px;border-top:3px solid #D9414B;background:#FAF3E7;border-radius:0 0 14px 14px"><div style="font-size:12px;font-weight:700;letter-spacing:.14em;color:#D9414B;text-transform:uppercase">Passo 1</div><h4 style="margin:10px 0 6px;font-size:17px;font-weight:800">Cadastro e conversa</h4><p style="margin:0;color:#7A5560;font-size:14px;line-height:1.55">Você preenche o formulário e fala com um especialista.</p></div>
+     <div data-passo="" style="padding:24px;border-top:3px solid #E8A0A6;background:#FAF3E7;border-radius:0 0 14px 14px"><div style="font-size:12px;font-weight:700;letter-spacing:.14em;color:#D9414B;text-transform:uppercase">Passo 2</div><h4 style="margin:10px 0 6px;font-size:17px;font-weight:800">Contrato assinado</h4><p style="margin:0;color:#7A5560;font-size:14px;line-height:1.55">Licença fechada e começo da jornada de implantação.</p></div>
+     <div data-passo="" style="padding:24px;border-top:3px solid #E8A0A6;background:#FAF3E7;border-radius:0 0 14px 14px"><div style="font-size:12px;font-weight:700;letter-spacing:.14em;color:#D9414B;text-transform:uppercase">Passo 3</div><h4 style="margin:10px 0 6px;font-size:17px;font-weight:800">Ponto e montagem</h4><p style="margin:0;color:#7A5560;font-size:14px;line-height:1.55">Auxiliamos você na prospecção e validação do ponto, e a nossa equipe monta a unidade.</p></div>
+     <div data-passo="" style="padding:24px;border-top:3px solid #E8A0A6;background:#FAF3E7;border-radius:0 0 14px 14px"><div style="font-size:12px;font-weight:700;letter-spacing:.14em;color:#D9414B;text-transform:uppercase">Passo 4</div><h4 style="margin:10px 0 6px;font-size:17px;font-weight:800">Loja aberta</h4><p style="margin:0;color:#7A5560;font-size:14px;line-height:1.55">Portas abertas e faturamento rodando 24 horas por dia.</p></div>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <section data-galeria="" data-screen-label="Unidades reais" style="background:#FAF3E7;padding:72px 0 76px">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px">
+   <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap">
+    <div style="max-width:32em">
+     <div data-reveal="" style="color:#D9414B;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase">Unidades reais</div>
+     <h2 style="margin:14px 0 0;font-size:clamp(28px,4.6vw,40px);line-height:1.08;letter-spacing:-.03em;font-weight:800;text-wrap:balance">Fotos das lojas que já estão abertas</h2>
+    </div>
+    <p data-reveal="" style="margin:0;color:#7A5560;font-size:15.5px;line-height:1.6;max-width:23em">Nada de render nem projeto. São unidades Mercadex inauguradas em condomínios, empresas e pontos de rua.</p>
+   </div>
+  </div>
+
+  <div data-gal-wrap="" style="margin-top:30px;padding:0 24px">
+   <div data-gal-track="" style="display:flex;gap:14px;width:max-content">
+    <figure data-gal-fig="" style="margin:0;position:relative;width:420px;flex:none;border-radius:18px;overflow:hidden;background:#2C0A14">
+     <img src="real-loja-rua.webp" alt="Loja de rua Mercadex 24h no dia da inauguração" width="1280" height="960" loading="lazy" decoding="async" style="width:100%;height:300px;object-fit:cover;display:block" />
+     <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:28px 18px 14px;background:linear-gradient(180deg,rgba(44,10,20,0),rgba(44,10,20,.88));color:#FFF7EE;font-size:13.5px;font-weight:700">Loja de rua</figcaption>
+    </figure>
+    <figure data-gal-fig="" style="margin:0;position:relative;width:420px;flex:none;border-radius:18px;overflow:hidden;background:#2C0A14">
+     <img src="real-container-toldo.webp" alt="Clientes comprando em uma unidade container Mercadex" width="960" height="1280" loading="lazy" decoding="async" style="width:100%;height:300px;object-fit:cover;object-position:center 45%;display:block" />
+     <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:28px 18px 14px;background:linear-gradient(180deg,rgba(44,10,20,0),rgba(44,10,20,.88));color:#FFF7EE;font-size:13.5px;font-weight:700">Container em operação</figcaption>
+    </figure>
+    <figure data-gal-fig="" style="margin:0;position:relative;width:420px;flex:none;border-radius:18px;overflow:hidden;background:#2C0A14">
+     <img src="real-pocket-interno.webp" alt="Gôndolas de uma unidade Mercadex Pocket em condomínio" width="1200" height="1600" loading="lazy" decoding="async" style="width:100%;height:300px;object-fit:cover;object-position:center 40%;display:block" />
+     <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:28px 18px 14px;background:linear-gradient(180deg,rgba(44,10,20,0),rgba(44,10,20,.88));color:#FFF7EE;font-size:13.5px;font-weight:700">Pocket em condomínio</figcaption>
+    </figure>
+    <figure data-gal-fig="" style="margin:0;position:relative;width:420px;flex:none;border-radius:18px;overflow:hidden;background:#2C0A14">
+     <img src="real-corredor.webp" alt="Corredor de uma unidade Mercadex com produtos de limpeza e refrigeradores" width="960" height="1280" loading="lazy" decoding="async" style="width:100%;height:300px;object-fit:cover;object-position:center 45%;display:block" />
+     <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:28px 18px 14px;background:linear-gradient(180deg,rgba(44,10,20,0),rgba(44,10,20,.88));color:#FFF7EE;font-size:13.5px;font-weight:700">Mix completo</figcaption>
+    </figure>
+    <figure data-gal-fig="" style="margin:0;position:relative;width:420px;flex:none;border-radius:18px;overflow:hidden;background:#2C0A14">
+     <img src="real-standard-hall.webp" alt="Unidade Mercadex instalada no hall de um condomínio" width="1280" height="960" loading="lazy" decoding="async" style="width:100%;height:300px;object-fit:cover;display:block" />
+     <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:28px 18px 14px;background:linear-gradient(180deg,rgba(44,10,20,0),rgba(44,10,20,.88));color:#FFF7EE;font-size:13.5px;font-weight:700">Standard no hall</figcaption>
+    </figure>
+    <figure data-gal-fig="" style="margin:0;position:relative;width:420px;flex:none;border-radius:18px;overflow:hidden;background:#2C0A14">
+     <img src="real-loja-rua-interno.webp" alt="Interior de uma loja de rua Mercadex 24h" width="768" height="1024" loading="lazy" decoding="async" style="width:100%;height:300px;object-fit:cover;display:block" />
+     <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:28px 18px 14px;background:linear-gradient(180deg,rgba(44,10,20,0),rgba(44,10,20,.88));color:#FFF7EE;font-size:13.5px;font-weight:700">Por dentro da loja</figcaption>
+    </figure>
+    <figure data-gal-fig="" style="margin:0;position:relative;width:420px;flex:none;border-radius:18px;overflow:hidden;background:#2C0A14">
+     <img src="real-container-condominio.webp" alt="Container Mercadex na área externa de um condomínio" width="1280" height="960" loading="lazy" decoding="async" style="width:100%;height:300px;object-fit:cover;display:block" />
+     <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:28px 18px 14px;background:linear-gradient(180deg,rgba(44,10,20,0),rgba(44,10,20,.88));color:#FFF7EE;font-size:13.5px;font-weight:700">Área externa</figcaption>
+    </figure>
+    <figure data-gal-fig="" style="margin:0;position:relative;width:420px;flex:none;border-radius:18px;overflow:hidden;background:#2C0A14">
+     <img src="real-geladeiras.webp" alt="Refrigeradores de bebidas de uma unidade Mercadex" width="1100" height="1467" loading="lazy" decoding="async" style="width:100%;height:300px;object-fit:cover;object-position:center 40%;display:block" />
+     <figcaption style="position:absolute;left:0;right:0;bottom:0;padding:28px 18px 14px;background:linear-gradient(180deg,rgba(44,10,20,0),rgba(44,10,20,.88));color:#FFF7EE;font-size:13.5px;font-weight:700">Bebida gelada a qualquer hora</figcaption>
+    </figure>
+   </div>
+  </div>
+ </section>
+
+ <section data-screen-label="CTA final" style="background:#D9414B;padding:0 24px;overflow:hidden">
+  <div data-grid="cta" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end">
+   <div style="padding:82px 0">
+    <h2 data-reveal="" style="margin:0;color:#fff;font-size:clamp(32px,5.4vw,46px);line-height:1.06;letter-spacing:-.03em;font-weight:800;text-wrap:balance">Vamos fazer a conta do seu caso?</h2>
+    <p data-reveal="" style="margin:18px 0 28px;color:rgba(255,255,255,.9);font-size:18px;line-height:1.55;max-width:28em">Fale com um especialista e receba a simulação do seu investimento, do ponto até o estoque inicial.</p>
+    <div data-reveal="" style="display:flex;gap:12px;flex-wrap:wrap">
+     <a data-magnet="" href="#form" style="background:#3E0F1B;color:#FAF3E7;font-weight:700;font-size:14px;letter-spacing:.07em;text-transform:uppercase;padding:18px 30px;border-radius:10px" style-hover="background:#FAF3E7;color:#3E0F1B">Preencher formulário</a>
+     <a data-magnet="" href="{{ whatsappLink }}" target="_blank" rel="noopener" style="background:transparent;border:1.5px solid rgba(255,255,255,.6);color:#fff;font-weight:700;font-size:14px;letter-spacing:.07em;text-transform:uppercase;padding:18px 30px;border-radius:10px" style-hover="background:#fff;color:#D9414B">Chamar no WhatsApp</a>
+    </div>
+    <div data-reveal="" style="margin-top:32px;color:rgba(255,255,255,.82);font-size:15px;line-height:1.6;max-width:30em;border-left:2px solid rgba(255,255,255,.4);padding-left:16px">A Mercadex nasceu em 2021 e hoje soma mais de 500 pontos em 170 cidades, com mais de 100 mil pessoas atendidas.</div>
+   </div>
+   <img data-cta-img="" src="Mercadex-Img3.webp" alt="Consultor Mercadex 24h" width="1000" height="1000" loading="lazy" decoding="async" style="width:100%;max-width:620px;height:auto;display:block;justify-self:end;margin-bottom:-4px" />
+  </div>
+ </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;whatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5511912805658&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;}}">
+class Component extends DCLogic {
+ state = {enviado: false, erro: false, nome: '', tel: '', cidade: '', capital: '', prazo: ''};
+
+ submit() {
+  const tel = this.state.tel.replace(/\D/g, '');
+  if (this.state.nome.trim().length < 3 || tel.length < 10) {
+   this.setState({erro: true});
+   const form = document.querySelector('[data-hero-form]');
+   if (form && window.gsap) window.gsap.fromTo(form, {x: -9}, {x: 0, duration: .5, ease: 'elastic.out(1.6,0.4)'});
+   return;
+  }
+  this.setState({enviado: true, erro: false});
+ }
+
+ componentDidMount() { this.boot(0); }
+
+ componentWillUnmount() { if (this.ctx) this.ctx.revert(); }
+
+ boot(tries) {
+  const ready = window.gsap && window.ScrollTrigger && document.querySelector('[data-cta-img]');
+  if (!ready) { if (tries < 90) setTimeout(() => this.boot(tries + 1), 120); return; }
+  if (this.ctx || this.booted) return;
+  if (document.visibilityState !== 'visible') {
+   if (!this.waitVis) {
+    this.waitVis = () => {
+     if (document.visibilityState !== 'visible') return;
+     document.removeEventListener('visibilitychange', this.waitVis);
+     this.waitVis = null;
+     this.boot(0);
+    };
+    document.addEventListener('visibilitychange', this.waitVis);
+   }
+   return;
+  }
+  const fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+  this.booted = true;
+  const wait = Promise.race([fonts, new Promise(r => setTimeout(r, 1200))]);
+  wait.then(() => { if (!this.ctx) this.motion(); });
+ }
+
+ motion() {
+  const {gsap, ScrollTrigger} = window;
+  gsap.registerPlugin(ScrollTrigger);
+  if (window.SplitText) gsap.registerPlugin(window.SplitText);
+  if (window.DrawSVGPlugin) gsap.registerPlugin(window.DrawSVGPlugin);
+  if (window.ScrambleTextPlugin) gsap.registerPlugin(window.ScrambleTextPlugin);
+  if (window.CustomEase) {
+   gsap.registerPlugin(window.CustomEase);
+   window.CustomEase.create('mxOut', '0.16,1,0.3,1');
+  }
+  const ease = window.CustomEase ? 'mxOut' : 'power3.out';
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  this.ctx = gsap.context(() => {
+   const docEnd = () => ScrollTrigger.maxScroll(window);
+
+   gsap.to('[data-progress]', {
+    scaleX: 1, ease: 'none',
+    scrollTrigger: {start: 0, end: docEnd, scrub: .3, invalidateOnRefresh: true}
+   });
+
+   const zap = document.querySelector('[data-zap]');
+   if (zap) {
+    gsap.set(zap, {y: 20});
+    let zapOpen = null;
+    const show = v => {
+     if (v === zapOpen && gsap.getProperty(zap, 'opacity') === (v ? 1 : 0)) return;
+     zapOpen = v;
+     zap.style.pointerEvents = v ? 'auto' : 'none';
+     gsap.to(zap, {opacity: v ? 1 : 0, y: v ? 0 : 20, duration: .4, overwrite: true, ease: 'power2.out'});
+    };
+    ScrollTrigger.create({
+     start: 0, end: docEnd, invalidateOnRefresh: true,
+     onUpdate: s => show(s.scroll() > 560),
+     onRefresh: s => show(s.scroll() > 560)
+    });
+   }
+
+   if (reduce) return;
+
+   const tl = gsap.timeline({defaults: {ease, duration: .9}});
+   const head = document.querySelector('[data-split]');
+   if (head && window.SplitText) {
+    const sp = new window.SplitText(head, {type: 'words,chars'});
+    tl.from(sp.chars, {yPercent: 110, opacity: 0, duration: .7, stagger: .018, ease: 'power3.out'}, 0);
+   }
+   tl.from('[data-logo]', {scale: .6, rotate: -40, opacity: 0, duration: .7}, 0)
+     .from('[data-hero-el]', {y: 26, opacity: 0, stagger: .09}, .18)
+     .from('[data-hero-form]', {y: 40, opacity: 0, duration: 1}, .3)
+     .from('[data-figura] img', {y: 60, opacity: 0, duration: 1.2}, .1)
+     .from('[data-balao]', {x: 60, opacity: 0, scale: .9, stagger: .12, duration: .7, ease: 'back.out(1.6)'}, .6);
+   if (window.DrawSVGPlugin) tl.from('[data-underline] path', {drawSVG: '0%', duration: .8, ease: 'power2.inOut'}, .95);
+
+   const bar = document.querySelector('[data-bar]');
+   if (bar) {
+    gsap.set(bar, {clearProps: 'transform'});
+    gsap.set(bar, {y: 0, yPercent: -100});
+    let barOpen = null;
+    const setBar = v => {
+     if (v === barOpen && gsap.getProperty(bar, 'yPercent') === (v ? 0 : -100) && gsap.getProperty(bar, 'y') === 0) return;
+     barOpen = v;
+     gsap.to(bar, {y: 0, yPercent: v ? 0 : -100, duration: .45, overwrite: true, ease: v ? 'power3.out' : 'power2.in'});
+    };
+    ScrollTrigger.create({
+     start: 0, end: docEnd, invalidateOnRefresh: true,
+     onUpdate: s => setBar(s.scroll() > 780),
+     onRefresh: s => setBar(s.scroll() > 780)
+    });
+   }
+
+   const glow = document.querySelector('[data-glow]');
+   const hero = document.querySelector('#topo');
+   if (glow && hero && window.matchMedia('(hover: hover)').matches) {
+    const gx = gsap.quickTo(glow, 'x', {duration: .7, ease: 'power3.out'});
+    const gy = gsap.quickTo(glow, 'y', {duration: .7, ease: 'power3.out'});
+    hero.addEventListener('mouseenter', () => gsap.to(glow, {opacity: 1, duration: .5}));
+    hero.addEventListener('mouseleave', () => gsap.to(glow, {opacity: 0, duration: .5}));
+    hero.addEventListener('mousemove', e => {
+     const r = hero.getBoundingClientRect();
+     gx(e.clientX - r.left);
+     gy(e.clientY - r.top);
+    });
+   }
+
+   if (window.SplitText) {
+    gsap.utils.toArray('h2').filter(el => !el.closest('[data-hero-form]')).forEach(el => {
+     const sp = new window.SplitText(el, {type: 'lines'});
+     const inner = sp.lines.map(l => {
+      l.style.display = 'block';
+      l.style.overflow = 'hidden';
+      l.style.paddingBottom = '.14em';
+      l.style.marginBottom = '-.14em';
+      const w = document.createElement('span');
+      w.style.display = 'block';
+      while (l.firstChild) w.appendChild(l.firstChild);
+      l.appendChild(w);
+      return w;
+     });
+     gsap.from(inner, {
+      yPercent: 118, duration: .95, ease, stagger: .09,
+      scrollTrigger: {trigger: el, start: 'top 88%', once: true}
+     });
+    });
+   }
+
+   if (window.ScrambleTextPlugin) {
+    gsap.utils.toArray('[data-scramble]').forEach(el => {
+     const txt = el.textContent;
+     gsap.to(el, {
+      duration: 1.1, scrambleText: {text: txt, chars: '0123456789', speed: .55, revealDelay: .1},
+      scrollTrigger: {trigger: el, start: 'top 90%', once: true}
+     });
+    });
+   }
+
+   gsap.utils.toArray('[data-card] > div:first-child, [data-gal-fig]').forEach(el => {
+    gsap.from(el, {
+     clipPath: 'inset(0% 0% 100% 0%)', duration: 1, ease,
+     scrollTrigger: {trigger: el, start: 'top 92%', once: true}
+    });
+   });
+
+   gsap.to('[data-capa]', {
+    yPercent: -12, ease: 'none',
+    scrollTrigger: {trigger: '#topo', start: 'top top', end: 'bottom top', scrub: true}
+   });
+
+   gsap.utils.toArray('[data-num]').forEach(el => {
+    const to = parseFloat(el.getAttribute('data-to'));
+    el.textContent = to;
+    ScrollTrigger.create({
+     trigger: el, start: 'top 92%', once: true,
+     onEnter: () => {
+      const o = {v: 0};
+      gsap.to(o, {v: to, duration: 1.6, ease: 'power2.out',
+       onUpdate: () => { el.textContent = Math.round(o.v); },
+       onComplete: () => { el.textContent = to; }});
+     }
+    });
+   });
+
+   const faixas = gsap.utils.toArray('[data-faixa]');
+   if (faixas.length) {
+    const skew = gsap.quickTo(faixas, 'skewX', {duration: .5, ease: 'power3.out'});
+    ScrollTrigger.create({
+     start: 0, end: docEnd, invalidateOnRefresh: true,
+     onUpdate: s => skew(gsap.utils.clamp(-9, 9, s.getVelocity() / -280))
+    });
+    ScrollTrigger.addEventListener('scrollEnd', () => skew(0));
+   }
+
+   const batch = (sel, vars) => gsap.utils.toArray(sel).forEach(el => {
+    gsap.from(el, Object.assign({
+     scrollTrigger: {trigger: el, start: 'top 88%', once: true},
+     opacity: 0, y: 30, duration: .8, ease
+    }, vars));
+   });
+   batch('[data-reveal]:not(h2)', {});
+   ['[data-tilt]', '[data-card]', '[data-inc]', '[data-passo]'].forEach(sel => {
+    const items = gsap.utils.toArray(sel);
+    if (!items.length) return;
+    ScrollTrigger.batch(items, {
+     start: 'top 90%', once: true,
+     onEnter: b => gsap.from(b, {opacity: 0, y: 44, scale: .97, duration: .8, stagger: .08, ease, overwrite: true})
+    });
+   });
+
+   gsap.utils.toArray('[data-para]').forEach(img => {
+    gsap.fromTo(img, {yPercent: -6}, {
+     yPercent: 6, ease: 'none',
+     scrollTrigger: {trigger: img, start: 'top bottom', end: 'bottom top', scrub: true}
+    });
+   });
+   gsap.utils.toArray('[data-card] img').forEach(img => {
+    gsap.fromTo(img, {scale: 1.14, yPercent: -4}, {
+     scale: 1, yPercent: 4, ease: 'none',
+     scrollTrigger: {trigger: img, start: 'top bottom', end: 'bottom top', scrub: true}
+    });
+   });
+   gsap.from('[data-cta-img]', {
+    yPercent: 14, opacity: 0, duration: 1, ease,
+    scrollTrigger: {trigger: '[data-cta-img]', start: 'top 92%', once: true}
+   });
+
+   gsap.matchMedia().add('(min-width: 1001px)', () => {
+    const track = document.querySelector('[data-gal-track]');
+    const wrap = document.querySelector('[data-gal-wrap]');
+    if (!track || !wrap) return;
+    const dist = () => Math.max(0, track.scrollWidth - wrap.clientWidth + 24);
+    gsap.to(track, {
+     x: () => -dist(), ease: 'none',
+     scrollTrigger: {
+      trigger: '[data-galeria]', start: 'top top', end: () => '+=' + dist(),
+      pin: true, scrub: 1, invalidateOnRefresh: true, anticipatePin: 1
+     }
+    });
+    gsap.utils.toArray('[data-gal-fig] img').forEach(img => {
+     gsap.fromTo(img, {scale: 1.16}, {
+      scale: 1, ease: 'none',
+      scrollTrigger: {trigger: img, containerAnimation: null, start: 'top bottom', end: 'bottom top', scrub: true}
+     });
+    });
+   });
+
+   gsap.matchMedia().add('(hover: hover) and (min-width: 861px)', () => {
+    gsap.utils.toArray('[data-magnet]').forEach(el => {
+     const x = gsap.quickTo(el, 'x', {duration: .4, ease: 'power3.out'});
+     const y = gsap.quickTo(el, 'y', {duration: .4, ease: 'power3.out'});
+     const move = e => {
+      const r = el.getBoundingClientRect();
+      x((e.clientX - r.left - r.width / 2) * .18);
+      y((e.clientY - r.top - r.height / 2) * .3);
+     };
+     const out = () => { x(0); y(0); };
+     el.addEventListener('mousemove', move);
+     el.addEventListener('mouseleave', out);
+     return () => { el.removeEventListener('mousemove', move); el.removeEventListener('mouseleave', out); };
+    });
+
+    gsap.utils.toArray('[data-tilt]').forEach(el => {
+     const rx = gsap.quickTo(el, 'rotationX', {duration: .5, ease: 'power3.out'});
+     const ry = gsap.quickTo(el, 'rotationY', {duration: .5, ease: 'power3.out'});
+     gsap.set(el, {transformPerspective: 800});
+     const move = e => {
+      const r = el.getBoundingClientRect();
+      ry(((e.clientX - r.left) / r.width - .5) * 12);
+      rx(((e.clientY - r.top) / r.height - .5) * -12);
+     };
+     const out = () => { rx(0); ry(0); };
+     el.addEventListener('mousemove', move);
+     el.addEventListener('mouseleave', out);
+     return () => { el.removeEventListener('mousemove', move); el.removeEventListener('mouseleave', out); };
+    });
+   });
+  });
+
+  gsap.ticker.wake();
+  const settle = () => {
+   if (document.visibilityState !== 'visible') return;
+   gsap.ticker.wake();
+   ScrollTrigger.refresh();
+   document.querySelectorAll('[data-num]').forEach(el => {
+    if (el.textContent === '0') el.textContent = el.getAttribute('data-to');
+   });
+  };
+  document.addEventListener('visibilitychange', settle);
+  setTimeout(settle, 2000);
+
+  document.querySelectorAll('a[href="#form"]').forEach(a => a.addEventListener('click', e => {
+   const t = document.querySelector('#form');
+   if (!t) return;
+   e.preventDefault();
+   window.scrollTo({top: t.getBoundingClientRect().top + window.scrollY - 24, behavior: 'smooth'});
+   const btn = t.querySelector('button');
+   if (btn) window.gsap.fromTo(t, {scale: .985}, {scale: 1, duration: .6, ease: 'elastic.out(1,0.5)', delay: .5});
+  }));
+ }
+
+ renderVals() {
+  const zap = this.props.whatsapp ?? '5511912805658';
+  return {
+   whatsappLink: 'https://api.whatsapp.com/send?phone=' + zap,
+   enviado: this.state.enviado, mostrarForm: !this.state.enviado, erro: this.state.erro,
+   nome: this.state.nome, tel: this.state.tel, cidade: this.state.cidade,
+   capital: this.state.capital, prazo: this.state.prazo,
+   setNome: e => this.setState({nome: e.target.value}),
+   setTel: e => this.setState({tel: e.target.value}),
+   setCidade: e => this.setState({cidade: e.target.value}),
+   setCapital: e => this.setState({capital: e.target.value}),
+   setPrazo: e => this.setState({prazo: e.target.value}),
+   enviar: () => this.submit()
+  };
+ }
+}
+</script>
+</body>
+</html>
